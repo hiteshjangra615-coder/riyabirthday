@@ -1,7 +1,11 @@
-# Riya Birthday Premium Website
+# Riya Birthday Ultimate
 
-Upload all files in this folder to the root of the GitHub Pages repository. Keep the `assets` folder with the image files.
+Upload the extracted contents to the ROOT of the existing GitHub Pages repository.
 
-Pages: 5 main chapters + bonus photo gallery + hidden gifts + secret door + final surprise.
+Pages: index, gifts, gallery, letter, secret, quiz, comfort, celebration, final.
 
-The gallery contains 9 user-provided photos in `assets/`.
+Secret Door #2 code: rasmalai.
+
+Countdown target: 12 October 2026, India time (UTC+05:30).
+
+This edition does not bundle copyrighted music.
