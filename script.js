@@ -1,7 +1,7 @@
 
 let bgm=null;
 function setupMusic(){
-  if(!bgm){ bgm=new Audio('assets/soft-romantic-instrumental.wav'); bgm.loop=true; bgm.volume=0.22; }
+  if(!bgm){ bgm=new Audio('soft-romantic-instrumental.wav'); bgm.loop=true; bgm.volume=0.22; }
   if(bgm.paused){ bgm.play().then(()=>{ const b=document.getElementById('musicBtn'); if(b)b.textContent='🎵 Music ON'; }).catch(()=>{}); }
 }
 function toggleMusic(){
