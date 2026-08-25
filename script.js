@@ -1,12 +1,13 @@
 
-let bgm;
+let bgm=null;
 function setupMusic(){
-  if(bgm)return;
-  bgm=new Audio('assets/soft-romantic-instrumental.wav');
-  bgm.loop=true; bgm.volume=.22;
-  bgm.play().catch(()=>{});
+  if(!bgm){ bgm=new Audio('assets/soft-romantic-instrumental.wav'); bgm.loop=true; bgm.volume=0.22; }
+  if(bgm.paused){ bgm.play().then(()=>{ const b=document.getElementById('musicBtn'); if(b)b.textContent='🎵 Music ON'; }).catch(()=>{}); }
 }
-const fx=document.getElementById('fx');
+function toggleMusic(){
+  if(!bgm){ setupMusic(); return; }
+  if(bgm.paused){ setupMusic(); } else { bgm.pause(); const b=document.getElementById('musicBtn'); if(b)b.textContent='🎵 Music OFF'; }
+}
 function burst(chars=['♥','✦','✨'],n=24){if(!fx)return;for(let i=0;i<n;i++){let s=document.createElement('span');s.className='float';s.textContent=chars[Math.floor(Math.random()*chars.length)];s.style.left=Math.random()*100+'vw';s.style.bottom='-30px';s.style.fontSize=14+Math.random()*25+'px';s.style.animationDuration=3+Math.random()*3+'s';fx.appendChild(s);setTimeout(()=>s.remove(),6500)}}
 function openBox(n){let e=document.getElementById('r'+n);if(e){e.classList.add('show');burst(['🎁','✨','💗'],14)}}
 function reveal(){let e=document.getElementById('letter');if(e){e.classList.add('show');burst(['💌','♥','✦'],20)}}
@@ -18,4 +19,3 @@ function closePhoto(){let l=document.getElementById('lightbox');if(l)l.classList
 function startCountdown(){const t=new Date('2026-10-12T00:00:00+05:30').getTime();function f(){let d=Math.max(0,t-Date.now()),v=[Math.floor(d/864e5),Math.floor(d/36e5)%24,Math.floor(d/6e4)%60,Math.floor(d/1e3)%60];['days','hours','mins','secs'].forEach((id,i)=>{let e=document.getElementById(id);if(e)e.textContent=String(v[i]).padStart(2,'0')})}f();setInterval(f,1000)}
 addEventListener('load',()=>{if(document.getElementById('days'))startCountdown();setTimeout(()=>burst(['✦','♥','✨'],14),500)})
 
-addEventListener('click',()=>setupMusic(),{once:true});
